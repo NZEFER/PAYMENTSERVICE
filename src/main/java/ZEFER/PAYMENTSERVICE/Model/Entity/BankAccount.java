@@ -1,11 +1,10 @@
-package ZEFER.PAYMENTSERVICE.Entity;
+package ZEFER.PAYMENTSERVICE.Model.Entity;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.kafka.common.protocol.types.Field;
 
 import java.math.BigDecimal;
 

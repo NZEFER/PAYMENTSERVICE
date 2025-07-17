@@ -1,6 +1,5 @@
-package ZEFER.PAYMENTSERVICE.Entity.Enums;
+package ZEFER.PAYMENTSERVICE.Model.Enums;
 
-import ZEFER.PAYMENTSERVICE.Entity.PaymentTransaction;
 import lombok.Getter;
 
 @Getter

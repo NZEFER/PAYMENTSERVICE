@@ -1,4 +1,4 @@
-package ZEFER.PAYMENTSERVICE.Entity;
+package ZEFER.PAYMENTSERVICE.Model.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package ZEFER.PAYMENTSERVICE.Entity.Enums.Convertor;
+package ZEFER.PAYMENTSERVICE.Model.Enums.Convertor;
 
-import ZEFER.PAYMENTSERVICE.Entity.Enums.PaymentTransactionStatus;
+import ZEFER.PAYMENTSERVICE.Model.Enums.PaymentTransactionStatus;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
