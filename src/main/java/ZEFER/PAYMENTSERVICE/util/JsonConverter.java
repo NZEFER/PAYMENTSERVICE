@@ -21,5 +21,14 @@ public class JsonConverter {
             throw new RuntimeException("Json converting exception", e);
         }
     }
+
+    public String toJson(Object obj) {
+        try {
+            return objectMapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            log.error("Json serialising exception: {}", e.getMessage());
+            throw new RuntimeException("Json converting exception", e);
+        }
+    }
 }
 
