@@ -3,10 +3,7 @@ package ZEFER.PAYMENTSERVICE.Model.Entity;
 import ZEFER.PAYMENTSERVICE.Model.Enums.Convertor.PaymentTransactionStatusConvertor;
 import ZEFER.PAYMENTSERVICE.Model.Enums.PaymentTransactionStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentTransaction extends BaseEntity{
+
     private String currency;
     private BigDecimal amount;
 

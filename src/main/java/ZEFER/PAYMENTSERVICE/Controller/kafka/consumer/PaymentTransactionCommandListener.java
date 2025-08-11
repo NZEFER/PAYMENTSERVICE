@@ -21,12 +21,12 @@ public class PaymentTransactionCommandListener {
     @KafkaListener(topics = "payment-command", containerFactory = "kafkaListenerContainerFactory")
     public void consumePaymentTransactionCommand(ConsumerRecord<String,String> record){
         var command = getPaymentTransactionCommand(record);
-        var handler = commandHandlers.get(command);
-        if (handler != null){
+        var commandHandler = commandHandlers.get(command);
+        if (commandHandler == null){
             throw new IllegalArgumentException("Unsupported payment transaction command, record: " + record);
         }
 
-        handler.process();
+        commandHandler.process(record.key(), record.value());
     }
 
     private PaymentTransactionCommand getPaymentTransactionCommand(ConsumerRecord<String, String> record){

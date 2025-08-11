@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CancelPaymentTransactionHandler implements PaymentTransactionCommandHandler {
 
+
     @Override
-    public void process() {
+    public void process(String requestId, String message) {
 
     }
 }
