@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class PaymentTransactionProducer {
     public final static String RESULT_TOPIC = "payment-command-result";
+    public final static String COMMAND_TOPIC = "payment-command-result";
+
 
     private final static String PAYMENT_TRANSACTION_COMMAND_TYPE_HEADER = "command";
     private final KafkaTemplate<String, String> kafkaTemplate;

@@ -3,6 +3,8 @@ package ZEFER.PAYMENTSERVICE.config;
 import ZEFER.PAYMENTSERVICE.Model.Enums.PaymentTransactionCommand;
 import ZEFER.PAYMENTSERVICE.Service.handler.CreatePaymentTransactionHandler;
 import ZEFER.PAYMENTSERVICE.Service.handler.PaymentTransactionCommandHandler;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,5 +22,12 @@ public class PaymentTransactionCommandConfig {
         commandHandlers.put(PaymentTransactionCommand.CREATE, createPaymentTransactionHandler);
         commandHandlers.put(PaymentTransactionCommand.REFUND, cancelPaymentTransactionHandler);
         return commandHandlers;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        var objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        return objectMapper;
     }
 }

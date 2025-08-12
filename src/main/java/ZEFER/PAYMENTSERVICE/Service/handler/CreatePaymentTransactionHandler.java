@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -31,7 +32,6 @@ public class CreatePaymentTransactionHandler implements PaymentTransactionComman
 
 
     @Override
-    @Transactional
     public void process(String requestId, String message) {
         var request = jsonConverter.fromJson(message, CreatePaymentTransactionRequest.class);
         paymentTransactionValidator.validateCreatePaymentTransactionRequest(request);
@@ -55,6 +55,13 @@ public class CreatePaymentTransactionHandler implements PaymentTransactionComman
         entity.setPaymentTransactionStatus(PaymentTransactionStatus.SUCCESS);
 
         var savedEntity = paymentTransactionService.save(entity);
+
+        if (destinationBankAccount.isPresent()) {
+            bankAccountService.saveAll(List.of(sourceBankAccount, destinationBankAccount.get()));
+        } else {
+            bankAccountService.saveAll(List.of(sourceBankAccount));
+        }
+
         paymentTransactionProducer.sentCommandResult(
                 PaymentTransactionProducer.RESULT_TOPIC,
                 requestId,
